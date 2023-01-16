@@ -5,13 +5,13 @@ export default function Slider(){
   <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
     <div className="carousel-inner">
       <div className="carousel-item active" data-bs-interval="3000">
-        <img className="auto-slider-img" src="https://miro.medium.com/max/730/1*fDJxac8P20Jmyb4GFYzWKQ.jpeg" alt=""></img>
+        <img className="auto-slider-img" src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1120&q=80" alt=""></img>
       </div>
       <div className="carousel-item" data-bs-interval="3000">
-        <img  className="auto-slider-img" src="https://www.adgully.com/img/800/202101/nnf.png.jpg" alt=""></img>
+      <img  class="auto-slider-img" src="https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt=""></img>
       </div>
       <div className="carousel-item" data-bs-interval="3000">
-        <img className="auto-slider-img" src="https://i.pinimg.com/originals/e7/62/28/e76228cd65761ae8fbc15522ebcc9686.png" alt=""></img>
+      <img class="auto-slider-img" src="https://img.freepik.com/free-photo/black-friday-elements-assortment_23-2149074075.jpg?w=2000" alt=""></img>
       </div>
     </div>
     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">

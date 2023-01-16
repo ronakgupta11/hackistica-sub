@@ -8,10 +8,13 @@ import {ethers} from "ethers";
 import Web3Modal from "web3modal";
 import { useState } from 'react';
 import "./styles.css"
+import ProductSlider from './components/productSlider';
+import { subgraphQuery } from "./utils/index";
 
 function App() {
   const [walletConnected, setWalletConnected] = useState(false);
   const [address, setAddress] = useState("");
+  const [insellerTab,setInSellertab] = useState(false);
 
   const web3Modal = new Web3Modal({
     network: "mumbai",
@@ -64,10 +67,11 @@ function App() {
   
 
   return( <div className="App">
-      <Header connectWallet = {connectWallet} setAddress = {setAddress}/>
-      {/* <Slider/> */}
-      {/* <Footer/> */}
-      <ProductDetails/>
+      <Header connectWallet = {connectWallet} setAddress = {setAddress} inSellerTab = {insellerTab} setInSellertab = {setInSellertab}/>
+      {!insellerTab && <Slider/>}
+      {!insellerTab&& <ProductSlider/>}
+      {insellerTab && <ProductDetails/>}
+      <Footer/>
     </div>
   );
 }
