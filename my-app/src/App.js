@@ -1,11 +1,16 @@
 // import logo from './logo.svg';
-import './App.css';
+
+import Header from './components/header';
+import Footer from './components/footer';
+import Slider from './components/slider';
+import "./styles.css"
 
 function App() {
-  return (
-    <div className="App">
-      hello world
-      
+  // const [wallet ,setWallet] = 
+  return( <div className="App">
+      <Header/>
+      <Slider/>
+      <Footer/>
     </div>
   );
 }
