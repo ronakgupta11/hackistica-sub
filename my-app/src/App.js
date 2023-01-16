@@ -14,7 +14,7 @@ function App() {
   const [address, setAddress] = useState("");
 
   const web3Modal = new Web3Modal({
-    network: "goerli",
+    network: "mumbai",
     providerOptions : {},
     disableInjectedProvider: false,
   });

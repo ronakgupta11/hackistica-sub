@@ -1,5 +1,8 @@
 import { BigNumber } from "ethers";
 import { useState } from "react";
+import { ethers } from "ethers";
+import Web3Modal from "web3modal";
+import {abi,SHOP_CONTRACT_ADDRESS} from "../constants/index.js"
 export default function ProductDetails(){
     // string imageUrl;
     // string name;
@@ -7,8 +10,24 @@ export default function ProductDetails(){
     // uint price;
     // string token;
     // uint quantity;
+    const web3Modal = new Web3Modal({
+        network: "mumbai",
+        providerOptions : {},
+        disableInjectedProvider: false,
+      });
 
-    function renderChangeTokenContainer(){
+    const getProviderOrSigner = async(needSigner = false) => {
+        const instance = await web3Modal.connect();
+        const provider = new ethers.providers.Web3Provider(instance);
+        if(needSigner){
+          const signer = provider.getSigner();
+          return signer;
+    
+        }
+        return provider;
+      }
+
+function renderChangeTokenContainer(){
         return(
             <div className="token-section">
                 <button className="token-btn" onclick = {setToken("eth")}></button>
@@ -17,7 +36,7 @@ export default function ProductDetails(){
             </div>
         );
     }
-    function renderTokenBtn(){
+function renderTokenBtn(){
         if(token === "eth"){
             return(
                 <button>
@@ -84,6 +103,29 @@ export default function ProductDetails(){
 
     }
 
+    const upload = async () => {
+        try {
+          // Get the signer from web3Modal, which in our case is MetaMask
+          // No need for the Signer here, as we are only reading state from the blockchain
+          const signer = await getProviderOrSigner(true);
+          // We connect to the Contract using a signer because we want the owner to
+          // sign the transaction
+          const shopContract = new ethers.Contract(
+            SHOP_CONTRACT_ADDRESS,
+            abi,
+            signer
+          );
+        //   setLoading(true);
+          // call the startGame function from the contract
+          const tx = await shopContract.listProduct(imageUrl,name,category,price,quantity,token);
+          await tx.wait();
+        //   setLoading(false);
+        } catch (err) {
+          console.error(err);
+        //   setLoading(false);
+        }
+      };
+    
 
     return(<div className="product-detail-page">
     <div className="container">
@@ -120,7 +162,7 @@ export default function ProductDetails(){
 
                     
                     <div >
-                        <button className="btn-form">Upload Product</button>
+                        <button onClick={upload} className="btn-form">Upload Product</button>
                     </div>
                 </form>
         </div>        
