@@ -8,6 +8,7 @@ dataSources:
     source:
       address: "0xcF8C5C5Cd9762798e4e33fF770c91c6639fee287"
       abi: Shop
+      startBlock: 31021529
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
