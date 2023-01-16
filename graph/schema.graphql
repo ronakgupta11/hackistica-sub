@@ -1,0 +1,49 @@
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type productAddToCart @entity(immutable: true) {
+  id: Bytes!
+  productId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type productBuy @entity(immutable: true) {
+  id: Bytes!
+  productId: BigInt! # uint256
+  quantityBought: BigInt! # uint256
+  buyer: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type productCreated @entity(immutable: true) {
+  id: Bytes!
+  productId: BigInt! # uint256
+  imageUrl: String! # string
+  name: String! # string
+  category: String! # string
+  price: BigInt! # uint256
+  token: String! # string
+  quantity: BigInt! # uint256
+  createdBy: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type productRemoveFromCart @entity(immutable: true) {
+  id: Bytes!
+  productId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

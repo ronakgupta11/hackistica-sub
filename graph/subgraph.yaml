@@ -1,0 +1,36 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Shop
+    network: mumbai
+    source:
+      address: "0xcF8C5C5Cd9762798e4e33fF770c91c6639fee287"
+      abi: Shop
+      startBlock: 31021529
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OwnershipTransferred
+        - productAddToCart
+        - productBuy
+        - productCreated
+        - productRemoveFromCart
+      abis:
+        - name: Shop
+          file: ./abis/Shop.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: productAddToCart(uint256)
+          handler: handleproductAddToCart
+        - event: productBuy(uint256,uint256,address)
+          handler: handleproductBuy
+        - event: productCreated(uint256,string,string,string,uint256,string,uint256,address)
+          handler: handleproductCreated
+        - event: productRemoveFromCart(uint256)
+          handler: handleproductRemoveFromCart
+      file: ./src/shop.ts
