@@ -52,13 +52,13 @@ function renderTokenImage(){
         }
     }
     
-  const zero = BigNumber.from(0);
+  const zero = BigNumber.from("0");
     const [imageUrl,setImageUrl] = useState("");
     const [name,setName] = useState("");
     const[category,setCategory] = useState("");
     const [price,setPrice] = useState(zero);
     const [token,setToken] = useState("eth");
-    const [quantity,setQuantity]  = useState(zero);
+    const [quantity,setQuantity]  = useState(0);
     const[render,setRender] = useState(false);
 
 
@@ -82,6 +82,11 @@ function renderTokenImage(){
     function handlePrice(e){
         console.log(e.target.value)
         setPrice(e.target.value);
+
+    }
+    function handleToken(e){
+        console.log(e.target.value)
+        setToken(e.target.value);
 
     }
 
@@ -143,7 +148,7 @@ function renderTokenImage(){
                         }}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-arrow-down"><polyline points="19 12 12 19 5 12"></polyline></svg>
                         </button> */}
-                        <select className = "select-option"name="myCar" id="token">
+                        <select className = "select-option" value={token} onChange = {handleToken} id="token">
                             <option value="eth" >Eth</option>
                             <option value="usdc" selected>USDC</option>
                             <option value="matic" > Matic

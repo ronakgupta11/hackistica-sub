@@ -54,6 +54,7 @@
     border-radius: 7px;
     border: 1px solid white;
     background: transparent;
+    color: white;
 }
 .input-area::placeholder{
     color: white;
@@ -75,9 +76,29 @@
 }
 
 .product-item{
+    display: flex;
     
 }
 
+.card{
+    width: 18rem;
+     height:22rem;
+     margin:1.5rem;
+     /* display: flex;  */
+     /* flex-direction: column; */
+     /* justify-content: space-between; */
+     align-content: space-between;
+     /* align-items: center; */
+}
+.card img{
+    margin: 0.4rem 0;
+    height: 50%;
+}
+.card-body{
+    /* align-self: flex-start; */
+    height: 30%;
+    justify-self: flex-end;
+}
 .auto-slider-img{
     width: 100%;
     height: 500px;
