@@ -1,31 +1,16 @@
 import { BigNumber } from "ethers";
 import { useState } from "react";
 import { ethers } from "ethers";
-import Web3Modal from "web3modal";
+
 import {abi,SHOP_CONTRACT_ADDRESS} from "../constants/index.js"
-export default function ProductDetails(){
+export default function ProductDetails(props){
     // string imageUrl;
     // string name;
     // string category;
     // uint price;
     // string token;
     // uint quantity;
-    const web3Modal = new Web3Modal({
-        network: "mumbai",
-        providerOptions : {},
-        disableInjectedProvider: false,
-      });
 
-    const getProviderOrSigner = async(needSigner = false) => {
-        const instance = await web3Modal.connect();
-        const provider = new ethers.providers.Web3Provider(instance);
-        if(needSigner){
-          const signer = provider.getSigner();
-          return signer;
-    
-        }
-        return provider;
-      }
 
 function renderChangeTokenContainer(){
         return(
@@ -70,7 +55,7 @@ function renderTokenBtn(){
         }
     }
     
-  const zero = BigNumber.from("0");
+  const zero = BigNumber.from(0);
     const [imageUrl,setImageUrl] = useState("");
     const [name,setName] = useState("");
     const[category,setCategory] = useState("");
@@ -107,7 +92,7 @@ function renderTokenBtn(){
         try {
           // Get the signer from web3Modal, which in our case is MetaMask
           // No need for the Signer here, as we are only reading state from the blockchain
-          const signer = await getProviderOrSigner(true);
+          const signer = await props.getSigner(true);
           // We connect to the Contract using a signer because we want the owner to
           // sign the transaction
           const shopContract = new ethers.Contract(

@@ -4,16 +4,14 @@
 .navbar-brand{
     font-size: 2rem;
     /* margin: 0px 40px 0 170px; */
-    font-weight: 800;
+    font-weight: 700;
+    color: #2874f0;
 }
 .containre-navbar{
     color: white;
 }
 
-.search-product{
-    width: 550px;
-    border-radius: 0;
-}
+
 
 .wallet-btn{
     border-radius: 0;
@@ -33,7 +31,9 @@
     color: white;
     font-size: 18px;
 }
-
+.icon{
+    margin: 0px 7px;
+}
 /* Product Section*/
 .product-detail-page{
 
@@ -49,8 +49,14 @@
     width: 500px;
     margin: 1rem;
     height: 37px;
-    border-radius: 5px;
-    border: 1px solid gray;
+    border-radius: 7px;
+    border: 1px solid white;
+    background: transparent;
+}
+.input-area::placeholder{
+    color: white;
+    padding-left: 10px;
+    opacity: 0.6;
 }
 .price-selection{
     display: flex;
@@ -138,7 +144,7 @@
     margin-right: 0px;
     position: relative;
     right: 170px;
-    color: #0d6efd;
+    color: #2874f0;
 }
 
 .description{
@@ -164,27 +170,29 @@ body{
 }
 
 .search-product{
-    width: 500px;
-    border-radius: 0;
+    width: 70%;
+    /* border-radius: 0; */
     /* border: 3px solid #0d6efd; */
+    background: transparent;
     border-radius: 30px ;
+    height: 35px;
+
+}
+.search-product::placeholder{
+    color: white;
+    margin: 0px 20px;
 }
 
-.wallet-btn{
-    border-radius: 0;
-    margin-left: 40px;
-    color: #2874f0;
-    font-weight: 700;
-}
+
 
 .nav-item{
     margin: 0 20px;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 18px;
 }
 .cart{
-    margin: 0 20px;
-    font-weight: 600;
+    margin: 0 10px;
+    font-weight: 400;
     color: white;
     font-size: 18px;
 }
@@ -192,13 +200,29 @@ body{
 .wallet-btn{
     background-color: #0d6efd !important;
     color: white !important;
-    border-radius: 2px;
-    border: 5px solid #2962b8;
+    border-radius: 4px;
+    border: none;
+    font-weight: 400;
 
 }
 .container-fluid{
     margin: 0px 10px;
+    /* display: flex; */
+}
+.nav-section-1{
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+.nav-section-2{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 .seller-btn{
     background: transparent;
+}
+.fab{
+    width: 24px;
 }

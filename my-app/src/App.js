@@ -67,10 +67,10 @@ function App() {
   
 
   return( <div className="App">
-      <Header connectWallet = {connectWallet} setAddress = {setAddress} inSellerTab = {insellerTab} setInSellertab = {setInSellertab}/>
+      <Header connect = {connectWallet} disconnect = {disconnect} walletStatus = {walletConnected} inSellerTab = {insellerTab} setInSellerTab = {setInSellertab}/>
       {!insellerTab && <Slider/>}
       {!insellerTab&& <ProductSlider/>}
-      {insellerTab && <ProductDetails/>}
+      {insellerTab && <ProductDetails getSigner = {getProviderOrSigner}/>}
       <Footer/>
     </div>
   );
