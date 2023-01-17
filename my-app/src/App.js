@@ -98,7 +98,7 @@ useEffect(() => {
       {!insellerTab&& <ProductSlider electronicsData = {electronicsData} householdData = {householdData}/>}
       {insellerTab && <ProductDetails getSigner = {getProviderOrSigner} loading = {loading} setLoading= {setLoading}/>}
       <Footer/>
-      {console.log(data)}
+      {/* {console.log(data)} */}
     </div>
   );
 }
