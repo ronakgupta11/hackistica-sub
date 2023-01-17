@@ -6,7 +6,7 @@ import Slider from './components/slider';
 import ProductDetails from './components/ProductDetails';
 import {ethers} from "ethers";
 import Web3Modal from "web3modal";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import "./styles.css"
 import ProductSlider from './components/productSlider';
 import { subgraphQuery } from "./utils/index";
@@ -44,7 +44,7 @@ function App() {
       await web3Modal.clearCachedProvider();
 
       setWalletConnected(false);
-      renderButton();
+      // renderButton();
       setAddress("");
   }
   function renderButton(){
@@ -64,7 +64,10 @@ function App() {
         )
     }
 }
-  
+  useEffect(() =>{
+    disconnect()
+
+  },[])
 
   return( <div className="App">
       <Header connect = {connectWallet} disconnect = {disconnect} walletStatus = {walletConnected} inSellerTab = {insellerTab} setInSellerTab = {setInSellertab}/>
