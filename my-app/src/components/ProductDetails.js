@@ -87,6 +87,7 @@ function renderTokenImage(){
 
     const upload = async () => {
         try {
+            props.setLoading(true);
           // Get the signer from web3Modal, which in our case is MetaMask
           // No need for the Signer here, as we are only reading state from the blockchain
           const signer = await props.getSigner(true);
@@ -101,10 +102,10 @@ function renderTokenImage(){
           // call the startGame function from the contract
           const tx = await shopContract.listProduct(imageUrl,name,category,price,quantity,token);
           await tx.wait();
-        //   setLoading(false);
+          props.setLoading(false);
         } catch (err) {
           console.error(err);
-        //   setLoading(false);
+          props.setLoading(false);
         }
       };
     
@@ -114,7 +115,7 @@ function renderTokenImage(){
    
         
         <div className="product-form">
-                <form>
+             
                     <div >
                         <input onChange={handleImage} className="input-area" type="text" id="product-image" placeholder="Enter image Url"></input>
                     </div>
@@ -137,21 +138,28 @@ function renderTokenImage(){
                         <input className="input-area price-input" type="text" id="product-category" placeholder="Enter Price"></input>
                         <div>
 
-                        {renderTokenImage()}
-                        <button style={{background:"transparent"
+                        {/* {renderTokenImage()} */}
+                        {/* <button style={{background:"transparent"
                         }}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-arrow-down"><polyline points="19 12 12 19 5 12"></polyline></svg>
-                        </button>
+                        </button> */}
+                        <select className = "select-option"name="myCar" id="token">
+                            <option value="eth" >Eth</option>
+                            <option value="usdc" selected>USDC</option>
+                            <option value="matic" > Matic
+                                </option>
+                            <option value="bitcoin" >BTC</option>
+                        </select>
 
                         
                     </div>
                     </div>
 
                     
+             
                     <div >
-                        <button onClick={() => upload()} className="btn-form btn btn-light wallet-btn wallet-btn">Upload Product</button>
+                        <button onClick={() => upload()} className="btn-form btn btn-light wallet-btn wallet-btn">{props.loading?"loading..":"Upload Product"}</button>
                     </div>
-                </form>
         </div>        
     </div>
 

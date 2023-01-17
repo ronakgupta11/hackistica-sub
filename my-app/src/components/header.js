@@ -11,7 +11,7 @@ export default function Header(props){
             <div className="container-fluid">
               <div className="nav-section-1">
 
-              <a className="navbar-brand" href="/">Web3 Cart</a>
+              <a className="navbar-brand" href="/">W3Kart</a>
               <input className="form-control me-2 search-product " type="search" placeholder="Search"  aria-label="Search"></input>
               </div>
                         
@@ -24,7 +24,7 @@ export default function Header(props){
                     <li className="nav-item">
                     <button className="nav-link cart seller-btn"><i className="fa-solid fa-cart-shopping icon"></i>Cart</button>
                   </li>
-                <button onClick= {props.walletStatus?() => props.disconnect():() => props.connect()}className="btn btn-light wallet-btn wallet-btn">{props.wallletStatus?"disconnect Wallet":"connect Wallet"}</button>
+                <button onClick= {props.walletStatus?() => props.disconnect():() => props.connect()}className="btn btn-light wallet-btn wallet-btn">{props.walletStatus?"disconnect Wallet":"connect Wallet"}</button>
                 </ul>
                 </div>
 

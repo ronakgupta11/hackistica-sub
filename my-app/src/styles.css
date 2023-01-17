@@ -40,9 +40,11 @@
     margin: 2rem;
 }
 .product-form{
+    margin: auto;
+    width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 .input-area{
@@ -226,3 +228,28 @@ body{
 .fab{
     width: 24px;
 }
+.select-option{
+    background: transparent;
+    color: white;
+    width: 100px;
+    height: 30px;
+    border: none;
+}
+select option {
+    margin: 40px;
+    background: rgba(0, 0, 0, 1);
+    color: #fff;
+    /* text-shadow: 0 1px 0 rgba(0, 0, 0, 0); */
+  }
+  .card-btn{
+    margin: 1rem 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .category-head{
+    color: white;
+    margin: 2rem;
+    font-size: 30px;
+  }

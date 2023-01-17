@@ -59,7 +59,7 @@ export default function Footer(){
       <section className="mb-5">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-8">
-            <h2 className="brand-name" >Web3 Cart</h2>
+            <h2 className="brand-name" >W3Kart</h2>
             <p className="description" >
               Connecting Peers Throught Security of Blockchain and enabling them to trade using token of their choice, Peer wanting to sell can demand paymnet in whatever payment method intended and peson want to buy can buy from different sellers accepting different tokens.
             </p>
@@ -97,7 +97,7 @@ export default function Footer(){
           className="text-center p-3 copyright-content">
         © 2022 Copyright:
         <a className="text-white" href="https://mdbootstrap.com/"
-          >Web3Cart</a>
+          >W3KCart</a>
       </div>
  
     

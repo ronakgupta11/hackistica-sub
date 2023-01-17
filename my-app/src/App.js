@@ -10,11 +10,19 @@ import { useEffect, useState } from 'react';
 import "./styles.css"
 import ProductSlider from './components/productSlider';
 import { subgraphQuery } from "./utils/index";
+import { FETCH_CREATED_PRODUCT } from './queries';
+
+
 
 function App() {
   const [walletConnected, setWalletConnected] = useState(false);
   const [address, setAddress] = useState("");
+  const [loading,setLoading] = useState(false);
   const [insellerTab,setInSellertab] = useState(false);
+  const [data,setData] = useState([]);
+  const [electronicsData,setElectronicsData] = useState([]);
+  const [householdData,setHouseholdData] = useState([]);
+
 
   const web3Modal = new Web3Modal({
     network: "mumbai",
@@ -64,17 +72,33 @@ function App() {
         )
     }
 }
-  useEffect(() =>{
-    disconnect()
 
-  },[])
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await subgraphQuery(FETCH_CREATED_PRODUCT());
+      setData(response.productCreateds);
+      setElectronicsData(response.productCreateds.filter(obj => obj.category === "electronics"));
+      setHouseholdData(response.productCreateds.filter(obj => obj.category === "household"))
+    } catch (err) {
+      // setError(err);
+      console.log(err)
+    }
+  };
+  //fetch data on every 5 seconds
+  // console.log(FETCH_CREATED_PRODUCT());
+  const interval = setInterval(fetchData, 5000);
+  return () => clearInterval(interval);
+}, [data]);
+
 
   return( <div className="App">
       <Header connect = {connectWallet} disconnect = {disconnect} walletStatus = {walletConnected} inSellerTab = {insellerTab} setInSellerTab = {setInSellertab}/>
       {!insellerTab && <Slider/>}
-      {!insellerTab&& <ProductSlider/>}
-      {insellerTab && <ProductDetails getSigner = {getProviderOrSigner}/>}
+      {!insellerTab&& <ProductSlider electronicsData = {electronicsData} householdData = {householdData}/>}
+      {insellerTab && <ProductDetails getSigner = {getProviderOrSigner} loading = {loading} setLoading= {setLoading}/>}
       <Footer/>
+      {console.log(data)}
     </div>
   );
 }
