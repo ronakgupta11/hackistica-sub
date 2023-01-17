@@ -8,7 +8,7 @@ export default function ProductSlider(props){
    const electronicsComp = electronicsData.map((data,i) => {
     // console.log(data.image);
     return(
-      <ProductCard key = {i} image = {data.image} name = {data.name} description = "this is description of product" price = {data.price} token = {data.token}></ProductCard> 
+      <ProductCard key = {i} image = {data.imageUrl} name = {data.name} description = "this is description of product" price = {data.price} token = {data.token}></ProductCard> 
     );
    });
    const householdComp = householdData.map((data,i) => {
