@@ -15,7 +15,7 @@ export default function ProductCard(props){
                   </div>
                   <div className="card-btn">
 
-                  <button className="btn btn-primary " >Buy Now</button>
+                  <button onClick={props.buyNow} className="btn btn-primary " >Buy Now</button>
                   <button className="btn btn-primary">Add to Cart</button>
                   </div>
                 </div>

@@ -57,7 +57,7 @@ function renderTokenImage(){
     const [name,setName] = useState("");
     const[category,setCategory] = useState("");
     const [price,setPrice] = useState(zero);
-    const [token,setToken] = useState("eth");
+    const [token,setToken] = useState("matic");
     const [quantity,setQuantity]  = useState(0);
     const[render,setRender] = useState(false);
 
@@ -163,7 +163,7 @@ function renderTokenImage(){
                     
              
                     <div >
-                        <button onClick={() => upload()} className="btn-form btn btn-light wallet-btn wallet-btn">{props.loading?"loading..":"Upload Product"}</button>
+                        <button onClick={() => upload()} className="btn-form btn btn-light wallet-btn wallet-btn">{props.loading?"loading...":"Upload Product"}</button>
                     </div>
         </div>        
     </div>

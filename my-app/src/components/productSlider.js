@@ -1,6 +1,15 @@
 import { useState } from "react";
-import ProductCard from "./productCard"; 
+import ProductCard from "./productCard";
+import { ethers } from "ethers";
+import { abi, SHOP_CONTRACT_ADDRESS } from "../constants";
+
 export default function ProductSlider(props){
+
+  const buyNow = async (e) => {
+    console.log(e.target.value)
+   
+  };
+
 
    const electronicsData = props.electronicsData;
    const householdData = props.householdData;
@@ -8,14 +17,20 @@ export default function ProductSlider(props){
    const electronicsComp = electronicsData.map((data,i) => {
     // console.log(data.image);
     return(
-      <ProductCard key = {i} image = {data.imageUrl} name = {data.name} description = "this is description of product" price = {data.price} token = {data.token}></ProductCard> 
+      <ProductCard key = {i} image = {data.imageUrl} name = {data.name} description = "this is description of product" price = {data.price} token = {data.token} buyNow  = {buyNow}></ProductCard> 
     );
    });
+
+   const row1Elec = electronicsComp.slice(0,4);
+   const row2Elec = electronicsComp.slice(4);
+  
    const householdComp = householdData.map((data,i) => {
     return(
-      <ProductCard key = {i} image = {data.image} name = {data.name} description = "this is description of product" price = {data.price} token = {data.token}></ProductCard> 
+      <ProductCard key = {i} image = {data.imageUrl} name = {data.name} description = "this is description of product" price = {data.price} token = {data.token}></ProductCard> 
     );
    })
+   const row1house = householdComp.slice(0,4);
+   const row2house = householdComp.slice(4);
     return(<div>
         <section className="product-section">
   <h4 className="category-head">Electronics</h4>
@@ -24,7 +39,7 @@ export default function ProductSlider(props){
       <div className="carousel-item active container-fluid ">
           <div className="row">
             <div className="col-lg-3 product-item">
-              {electronicsComp}
+              {row1Elec}
             </div>
 
             
@@ -34,7 +49,7 @@ export default function ProductSlider(props){
       <div className="carousel-item container-fluid">
         <div className="row">
           <div className="col-lg-3 product-item">
-              {electronicsComp}
+              {row2Elec}
           {/* {householdComp} */}
           </div>
        
@@ -56,7 +71,7 @@ export default function ProductSlider(props){
       <div className="carousel-item active container-fluid ">
           <div className="row">
             <div className="col-lg-3 product-item">
-              {householdComp}
+              {row1house}
             </div>
 
             
@@ -66,7 +81,7 @@ export default function ProductSlider(props){
       <div className="carousel-item container-fluid">
         <div className="row">
           <div className="col-lg-3 product-item">
-          {householdComp}
+          {row2house}
 
           </div>
        
